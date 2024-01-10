@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class SwitchBetweenCameras : MonoBehaviour
 {
+    //public Image fadePanel;
+    //public float fadeTime;
+
     public Camera cam1;
     public Camera cam2;
     public Camera cam3;
