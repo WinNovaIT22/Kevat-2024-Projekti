@@ -5,9 +5,11 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public Camera cam1;
-    public Camera cam2;
-    public Camera cam3;
-    public Camera cam4;
+    public Transform target;
+    public float smoothing;
+
+    public Vector2 maxPos;
+    public Vector2 minPos;
 
     public float zoomSpeed = 2f;
     public float minOrthoSize = 8.0f;
@@ -17,7 +19,7 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam1 = GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -26,8 +28,16 @@ public class CameraManager : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         cam1.orthographicSize = Mathf.Clamp(cam1.orthographicSize - scroll * zoomSpeed, minOrthoSize, maxOrthoSize);
-        cam2.orthographicSize = Mathf.Clamp(cam2.orthographicSize - scroll * zoomSpeed, minOrthoSize, maxOrthoSize);
-        cam3.orthographicSize = Mathf.Clamp(cam3.orthographicSize - scroll * zoomSpeed, minOrthoSize, maxOrthoSize);
-        cam4.orthographicSize = Mathf.Clamp(cam4.orthographicSize - scroll * zoomSpeed, minOrthoSize, maxOrthoSize);
+
+        if (transform.position != target.position)
+        {
+            Vector3 targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+
+            targetPos.x = Mathf.Clamp(targetPos.x, minPos.x, maxPos.x);
+            targetPos.y = Mathf.Clamp(targetPos.y, minPos.y, maxPos.y);
+
+            transform.position = Vector3.Lerp(transform.position, targetPos, smoothing);
+        }
+
     }
 }
