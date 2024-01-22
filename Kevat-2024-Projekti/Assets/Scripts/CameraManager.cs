@@ -4,40 +4,27 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public Camera cam1;
-    public Transform target;
-    public float smoothing;
+    public Transform target; // Kamera seuraa t‰t‰ objektia
+    public float smoothSpeed = 0.125f; // Sileyden m‰‰r‰ (suurempi arvo = suurempi sileyys)
+    public Vector3 offset; // Kameran et‰isyys seurattavasta kohteesta
+    public float zoomSpeed = 2f; // Zoomin nopeus
+    public float minZoom = 8f; // Minimizoom
+    public float maxZoom = 9f; // Maksimizoom
 
-    public Vector2 maxPos;
-    public Vector2 minPos;
-
-    public float zoomSpeed = 2f;
-    public float minOrthoSize = 8.0f;
-    public float maxOrthoSize = 9.0f;
-
-
-    // Start is called before the first frame update
-    void Start()
+    void LateUpdate()
     {
-        cam1 = GetComponent<Camera>();
-    }
+        // Lasketaan haluttu kohdepaikka
+        Vector3 desiredPosition = target.position + offset;
+        // Lerp-funktio antaa sileyden
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        // Asetetaan kameran paikka
+        transform.position = smoothedPosition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-
-        cam1.orthographicSize = Mathf.Clamp(cam1.orthographicSize - scroll * zoomSpeed, minOrthoSize, maxOrthoSize);
-
-        if (transform.position != target.position)
-        {
-            Vector3 targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
-
-            targetPos.x = Mathf.Clamp(targetPos.x, minPos.x, maxPos.x);
-            targetPos.y = Mathf.Clamp(targetPos.y, minPos.y, maxPos.y);
-
-            transform.position = Vector3.Lerp(transform.position, targetPos, smoothing);
-        }
-
+        // Zoomaus
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        float newSize = Camera.main.orthographicSize - scrollWheel * zoomSpeed;
+        newSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+        Camera.main.orthographicSize = newSize;
     }
 }
+
