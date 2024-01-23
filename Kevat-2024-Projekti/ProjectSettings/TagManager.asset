@@ -60,6 +60,18 @@ TagManager:
   - name: PuzzleThings
     uniqueID: 2567141547
     locked: 0
+  - name: Stuff
+    uniqueID: 2671163987
+    locked: 0
+  - name: Back Crates
+    uniqueID: 2450371699
+    locked: 0
+  - name: Front Crates
+    uniqueID: 2146751391
+    locked: 0
+  - name: Top Crates
+    uniqueID: 2015683051
+    locked: 0
   - name: Player
     uniqueID: 3740980803
     locked: 0
