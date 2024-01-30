@@ -57,6 +57,9 @@ TagManager:
   - name: Wall
     uniqueID: 1850779783
     locked: 0
+  - name: Furniture
+    uniqueID: 2663920393
+    locked: 0
   - name: PuzzleThings
     uniqueID: 2567141547
     locked: 0
@@ -71,6 +74,9 @@ TagManager:
     locked: 0
   - name: Top Crates
     uniqueID: 2015683051
+    locked: 0
+  - name: Enemy
+    uniqueID: 3618811399
     locked: 0
   - name: Player
     uniqueID: 3740980803
