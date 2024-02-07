@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class removeCoin : MonoBehaviour
 {
-    public int coins = 0;
+    public int value;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("Coins", coins);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(coins);
-        PlayerPrefs.SetInt("Coins", coins);
+
     }
 
 
@@ -24,8 +23,8 @@ public class removeCoin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PLAYER"))
         {
-            coins += 1;
             Destroy(this.gameObject);
+            TextManager.instance.IncreaseCoins(value);
         }
     }
 }
