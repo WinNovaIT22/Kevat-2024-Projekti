@@ -20,11 +20,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - post
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Box
+  - InvisibleWall
+  - Wall
   - 
   - 
   - 
