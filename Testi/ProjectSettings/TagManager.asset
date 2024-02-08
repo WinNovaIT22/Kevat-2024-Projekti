@@ -7,6 +7,7 @@ TagManager:
   - DIE
   - GOAL
   - PLAYER
+  - ChangeMode
   layers:
   - Default
   - TransparentFX
