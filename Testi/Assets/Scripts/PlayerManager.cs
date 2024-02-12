@@ -6,9 +6,12 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using UnityEngine.Jobs;
+using JetBrains.Annotations;
 
 public class PlayerManager : MonoBehaviour
 {
+    public bool useStatic = false;
 
     public bool normalMode = true;
     public float moveSpeed = 5f;
@@ -24,6 +27,9 @@ public class PlayerManager : MonoBehaviour
 
     public Rigidbody2D rb;
     //public Animator animator;
+
+    [SerializeField] public GameObject[] box;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +54,7 @@ public class PlayerManager : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-
+        Debug.Log("Koskettaako maata: " + isGrounded());
 
         if (Input.GetKeyDown(KeyCode.W) && coyoteTimeCounter > 0f && !normalMode)
         {
@@ -62,6 +68,19 @@ public class PlayerManager : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
+        if (useStatic){
+            for (int i = 0; i < box.Length; i++)
+            {
+                box[i].transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            }
+        }
+
+        else{
+            for (int i = 0; i < box.Length; i++)
+            {
+                box[i].transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -87,11 +106,26 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("GOAL"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        if (collision.gameObject.CompareTag("ChangeToNormal"))
+        {
+            Debug.Log("Vaihda modea");
+            rb.gravityScale = 0;
+            normalMode = true;
+        }
+
+        if (collision.gameObject.CompareTag("ChangeToUnNormal"))
+        {
+            Debug.Log("Vaihda modea");
+            rb.gravityScale = 1;
+            normalMode = false;
         }
     }
 

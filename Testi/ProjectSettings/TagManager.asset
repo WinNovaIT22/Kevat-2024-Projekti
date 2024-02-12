@@ -8,6 +8,8 @@ TagManager:
   - GOAL
   - PLAYER
   - ChangeMode
+  - ChangeToNormal
+  - ChangeToUnNormal
   layers:
   - Default
   - TransparentFX
