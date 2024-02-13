@@ -12,6 +12,7 @@ using JetBrains.Annotations;
 public class PlayerManager : MonoBehaviour
 {
     public bool useStatic = false;
+    public bool useBoxes = false;
 
     public bool normalMode = true;
     public float moveSpeed = 5f;
@@ -68,14 +69,14 @@ public class PlayerManager : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
-        if (useStatic){
+        if (useStatic && useBoxes){
             for (int i = 0; i < box.Length; i++)
             {
                 box[i].transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
         }
 
-        else{
+        else if(!useStatic && useBoxes){
             for (int i = 0; i < box.Length; i++)
             {
                 box[i].transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;

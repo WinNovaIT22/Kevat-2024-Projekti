@@ -1186,6 +1186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4475459681672828679, guid: 02a07c0fa5225b54683fce1c22dd0958, type: 3}
+      propertyPath: m_TagString
+      value: PLAYER
+      objectReference: {fileID: 0}
     - target: {fileID: 4475459681672828682, guid: 02a07c0fa5225b54683fce1c22dd0958, type: 3}
       propertyPath: groundCheck
       value: 
