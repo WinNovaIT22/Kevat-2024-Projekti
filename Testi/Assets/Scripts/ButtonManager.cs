@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,42 +13,50 @@ public class ButtonManager : MonoBehaviour
 {
     public float fadeTime;
     public Image fadePanel;
+    public bool resetPrefs = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (resetPrefs)
+        {
+            PlayerPrefs.DeleteAll();
+        }
 
+        if (PlayerPrefs.GetInt("UnlockedLevels") == 0)
+        {
+            PlayerPrefs.SetInt("UnlockedLevels", 3); 
+        }
     }
 
-    //Tämä funktio asettaa savedscene playerprefsiin nykyisen scenen arvon, jotta back funktiossa voidaan palata tähän skeneen. Tämä myös asettaa game skenen näkyviin. 
+  
     public void Play()
     {
         StartCoroutine(PlaySequence());
-
     }
 
-    //Tämä funktio asettaa savedscene playerprefsiin nykyisen scenen arvon, jotta back funktiossa voidaan palata tähän skeneen. Tämä myös asettaa mainmenu skenen näkyviin. 
     public void MainMenu()
     {
         StartCoroutine(MainMenuSequence());
-
     }
 
-    //Tämä funktio asettaa pelin ajaksi 1 jolloin peli toimii, tulostaa konsoliin sanan quit ja sulkee pelin.
+    public void Levels()
+    {
+        StartCoroutine(LevelsSequence());
+    }
+
     public void Quit()
     {
         StartCoroutine(QuitSequence());
 
     }
 
-    //Tämä funktio asettaa savedscene playerprefsiin nykyisen scenen arvon, jotta back funktiossa voidaan palata tähän skeneen. Tämä myös asettaa settings skenen näkyviin. 
     public void Settings()
     {
         StartCoroutine(SettingsSequence());
 
     }
 
-    //Tämä funktio asettaa sen skenen näkyviin, mikä on viimeisimmäksi tallennettu playerprefsin savedsceneen.
     public void Back()
     {
         StartCoroutine(BackSequence());
@@ -69,7 +78,7 @@ public class ButtonManager : MonoBehaviour
         DOTween.KillAll();
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(PlayerPrefs.GetInt("UnlockedLevels"));
     }
 
     IEnumerator MainMenuSequence()
@@ -80,6 +89,16 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator LevelsSequence()
+    {
+        fadePanel.DOFade(1, fadeTime);
+        yield return new WaitForSeconds(fadeTime);
+        DOTween.KillAll();
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("Levels");
     }
 
     IEnumerator SettingsSequence()

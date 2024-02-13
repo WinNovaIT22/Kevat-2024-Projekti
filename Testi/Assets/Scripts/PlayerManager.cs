@@ -137,6 +137,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("GOAL"))
         {
+            PlayerPrefs.SetInt("UnlockedLevels", SceneManager.GetActiveScene().buildIndex + 1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
