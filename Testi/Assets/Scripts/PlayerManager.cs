@@ -30,6 +30,14 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] public GameObject[] box;
 
+    [SerializeField] public GameObject blockGoal;
+
+    public bool canDash = false;
+    private bool isDashing;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +48,11 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDashing) 
+        {
+            return;
+        }
+
         //Inputs
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -68,6 +81,8 @@ public class PlayerManager : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
+
+        //Boxes can move
         if (useStatic){
             for (int i = 0; i < box.Length; i++)
             {
@@ -81,10 +96,21 @@ public class PlayerManager : MonoBehaviour
                 box[i].transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }
         }
+
+        //Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && normalMode)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     private void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         //Movement
         if (normalMode == true)
         {
@@ -119,6 +145,8 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("Vaihda modea");
             rb.gravityScale = 0;
             normalMode = true;
+            useStatic = false;
+            blockGoal.SetActive(true);
         }
 
         if (collision.gameObject.CompareTag("ChangeToUnNormal"))
@@ -126,6 +154,8 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("Vaihda modea");
             rb.gravityScale = 1;
             normalMode = false;
+            useStatic = true;
+            blockGoal.SetActive(false);
         }
     }
 
@@ -152,4 +182,33 @@ public class PlayerManager : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
+
+    //Dash
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+
+        // Calculate the dash direction based on the movement vector
+        Vector2 dashDirection = movement.normalized;
+
+        // Set the velocity for dashing in the desired direction
+        rb.velocity = dashDirection * dashingPower;
+
+        // Wait for the specified dash time
+        yield return new WaitForSeconds(dashingTime);
+
+        // Reset velocity to zero after the dash is completed
+        rb.velocity = Vector2.zero;
+
+        // Reset the dashing flag
+        isDashing = false;
+
+        // Wait for the specified cooldown time
+        yield return new WaitForSeconds(dashingCooldown);
+
+        // Allow dashing again
+        canDash = true;
+    }
+
 }
