@@ -102,6 +102,12 @@ public class PlayerManager : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+
+        //Reset level
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void FixedUpdate()
