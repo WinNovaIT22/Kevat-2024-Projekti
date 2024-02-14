@@ -25,163 +25,163 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 4)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 4)
         {
             levelText[0].gameObject.SetActive(true);
             lockIcon[0].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 5)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 5)
         {
             levelText[1].gameObject.SetActive(true);
             lockIcon[1].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 6)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 6)
         {
             levelText[2].gameObject.SetActive(true);
             lockIcon[2].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 7)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 7)
         {
             levelText[3].gameObject.SetActive(true);
             lockIcon[3].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 8)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 8)
         {
             levelText[4].gameObject.SetActive(true);
             lockIcon[4].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 9)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 9)
         {
             levelText[5].gameObject.SetActive(true);
             lockIcon[5].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 10)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 10)
         {
             levelText[6].gameObject.SetActive(true);
             lockIcon[6].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 11)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 11)
         {
             levelText[7].gameObject.SetActive(true);
             lockIcon[7].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 12)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 12)
         {
             levelText[8].gameObject.SetActive(true);
             lockIcon[8].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 13)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 13)
         {
             levelText[9].gameObject.SetActive(true);
             lockIcon[9].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 14)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 14)
         {
             levelText[10].gameObject.SetActive(true);
             lockIcon[10].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 15)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 15)
         {
             levelText[11].gameObject.SetActive(true);
             lockIcon[11].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 16)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 16)
         {
             levelText[12].gameObject.SetActive(true);
             lockIcon[12].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 17)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 17)
         {
             levelText[13].gameObject.SetActive(true);
             lockIcon[13].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 18)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 18)
         {
             levelText[14].gameObject.SetActive(true);
             lockIcon[14].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 19)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 19)
         {
             levelText[15].gameObject.SetActive(true);
             lockIcon[15].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 20)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 20)
         {
             levelText[16].gameObject.SetActive(true);
             lockIcon[16].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 21)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 21)
         {
             levelText[17].gameObject.SetActive(true);
             lockIcon[17].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 22)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 22)
         {
             levelText[18].gameObject.SetActive(true);
             lockIcon[18].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 23)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 23)
         {
             levelText[19].gameObject.SetActive(true);
             lockIcon[19].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 24)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 24)
         {
             levelText[20].gameObject.SetActive(true);
             lockIcon[20].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 25)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 25)
         {
             levelText[21].gameObject.SetActive(true);
             lockIcon[21].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 26)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 26)
         {
             levelText[22].gameObject.SetActive(true);
             lockIcon[22].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 27)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 27)
         {
             levelText[23].gameObject.SetActive(true);
             lockIcon[23].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 28)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 28)
         {
             levelText[24].gameObject.SetActive(true);
             lockIcon[24].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 29)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 29)
         {
             levelText[25].gameObject.SetActive(true);
             lockIcon[25].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("UnlockedLevels") == 30)
+        if (PlayerPrefs.GetInt("UnlockedLevels") >= 30)
         {
             levelText[26].gameObject.SetActive(true);
             lockIcon[26].SetActive(false);
@@ -257,113 +257,267 @@ public class LevelManager : MonoBehaviour
     }
     public void Level6()
     {
-        StartCoroutine(Level6Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 6)
+        {
+            StartCoroutine(Level6Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level7()
     {
-        StartCoroutine(Level7Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 7)
+        {
+            StartCoroutine(Level7Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level8()
     {
-        StartCoroutine(Level8Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 8)
+        {
+            StartCoroutine(Level8Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level9()
     {
-        StartCoroutine(Level9Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 9)
+        {
+            StartCoroutine(Level9Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level10()
     {
-        StartCoroutine(Level10Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 10)
+        {
+            StartCoroutine(Level10Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level11()
     {
-        StartCoroutine(Level11Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 11)
+        {
+            StartCoroutine(Level11Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level12()
     {
-        StartCoroutine(Level12Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 12)
+        {
+            StartCoroutine(Level12Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level13()
     {
-        StartCoroutine(Level13Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 13)
+        {
+            StartCoroutine(Level13Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level14()
     {
-        StartCoroutine(Level14Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 14)
+        {
+            StartCoroutine(Level14Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level15()
     {
-        StartCoroutine(Level15Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 15)
+        {
+            StartCoroutine(Level15Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level16()
     {
-        StartCoroutine(Level16Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 16)
+        {
+            StartCoroutine(Level16Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level17()
     {
-        StartCoroutine(Level17Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 17)
+        {
+            StartCoroutine(Level17Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level18()
     {
-        StartCoroutine(Level18Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 18)
+        {
+            StartCoroutine(Level18Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level19()
     {
-        StartCoroutine(Level19Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 19)
+        {
+            StartCoroutine(Level19Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level20()
     {
-        StartCoroutine(Level20Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 20)
+        {
+            StartCoroutine(Level20Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level21()
     {
-        StartCoroutine(Level21Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 21)
+        {
+            StartCoroutine(Level21Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level22()
     {
-        StartCoroutine(Level22Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 22)
+        {
+            StartCoroutine(Level22Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level23()
     {
-        StartCoroutine(Level23Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 23)
+        {
+            StartCoroutine(Level23Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level24()
     {
-        StartCoroutine(Level24Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 24)
+        {
+            StartCoroutine(Level24Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level25()
     {
-        StartCoroutine(Level25Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 25)
+        {
+            StartCoroutine(Level25Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level26()
     {
-        StartCoroutine(Level26Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 26)
+        {
+            StartCoroutine(Level26Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
     public void Level27()
     {
-        StartCoroutine(Level27Sequence());
+        if (PlayerPrefs.GetInt("UnlockedLevels") > 27)
+        {
+            StartCoroutine(Level27Sequence());
+        }
 
+        else
+        {
+            Debug.Log("Kenttä ei ole vielä auki.");
+        }
     }
 
     public void Back()
