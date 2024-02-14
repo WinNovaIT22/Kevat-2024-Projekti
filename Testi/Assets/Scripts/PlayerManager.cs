@@ -104,7 +104,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         //Reset level
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && PlayerPrefs.GetInt("isPaused") != 1)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

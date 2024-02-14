@@ -18,43 +18,41 @@ public class ButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (resetPrefs)
-        {
-            PlayerPrefs.DeleteAll();
-        }
-
         if (PlayerPrefs.GetInt("UnlockedLevels") == 0)
         {
-            PlayerPrefs.SetInt("UnlockedLevels", 3); 
+            PlayerPrefs.SetInt("UnlockedLevels", 3);
         }
     }
 
   
     public void Play()
     {
+        
         StartCoroutine(PlaySequence());
     }
 
     public void MainMenu()
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(MainMenuSequence());
     }
 
     public void Levels()
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(LevelsSequence());
     }
 
     public void Quit()
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(QuitSequence());
-
     }
 
     public void Settings()
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(SettingsSequence());
-
     }
 
     public void Back()
@@ -64,6 +62,7 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator BackSequence()
     {
+        Debug.Log("Takaisin");
         fadePanel.DOFade(1, fadeTime);
         yield return new WaitForSeconds(fadeTime);
         DOTween.KillAll();
@@ -73,6 +72,7 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator PlaySequence()
     {
+        Debug.Log("Kenttä x");
         fadePanel.DOFade(1, fadeTime);
         yield return new WaitForSeconds(fadeTime);
         DOTween.KillAll();
@@ -83,6 +83,7 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator MainMenuSequence()
     {
+        Debug.Log("MainMenu");
         fadePanel.DOFade(1, fadeTime);
         yield return new WaitForSeconds(fadeTime);
         DOTween.KillAll();
@@ -93,6 +94,7 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator LevelsSequence()
     {
+        Debug.Log("LevelMenu");
         fadePanel.DOFade(1, fadeTime);
         yield return new WaitForSeconds(fadeTime);
         DOTween.KillAll();
@@ -103,6 +105,7 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator SettingsSequence()
     {
+        Debug.Log("Asetukset");
         fadePanel.DOFade(1, fadeTime);
         yield return new WaitForSeconds(fadeTime);
         DOTween.KillAll();
@@ -113,6 +116,7 @@ public class ButtonManager : MonoBehaviour
 
     IEnumerator QuitSequence()
     {
+        Debug.Log("QUIT");
         fadePanel.DOFade(1, fadeTime);
         yield return new WaitForSeconds(fadeTime);
         DOTween.KillAll();
