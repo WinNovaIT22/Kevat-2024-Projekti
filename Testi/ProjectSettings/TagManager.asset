@@ -10,6 +10,7 @@ TagManager:
   - ChangeMode
   - ChangeToNormal
   - ChangeToUnNormal
+  - Sun
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Box
   - InvisibleWall
   - Wall
-  - 
+  - Shadow
   - 
   - 
   - 
@@ -55,4 +56,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1210565537
+    locked: 0
+  - name: Lava
+    uniqueID: 1109775649
     locked: 0
