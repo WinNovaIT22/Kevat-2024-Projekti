@@ -122,7 +122,17 @@ public class ShadowDetection : MonoBehaviour
         {
             if (player.transform.position.x > extendedLeftDown.x && player.transform.position.x < extendedRightUp.x)
             {
-                playerInsideX = true;
+                if (player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y)
+                {
+                    playerInsideX = true;
+                    playerInsideY = true;
+                }
+                else
+                {
+                    playerInsideX = false;
+                    playerInsideY = false;
+                }
+                    
             }
             else
             {
@@ -138,7 +148,16 @@ public class ShadowDetection : MonoBehaviour
             Debug.DrawLine(rightDownEdge, extendedRightDown, Color.yellow);
             if (player.transform.position.x > extendedLeftUp.x && player.transform.position.x < extendedRightDown.x)
             {
-                playerInsideX = true;
+                if (player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y)
+                {
+                    playerInsideX = true;
+                    playerInsideY = true;
+                }
+                else
+                {
+                    playerInsideX = false;
+                    playerInsideY = false;
+                }
             }
             else
             {
@@ -173,9 +192,9 @@ public class ShadowDetection : MonoBehaviour
             PlayerPrefs.SetInt("InShadow", 0);
         }
 
-        if (PlayerPrefs.GetInt("InShadow") == 0)
+        /*if (PlayerPrefs.GetInt("InShadow") == 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        }*/
     }
 }
