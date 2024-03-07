@@ -6,24 +6,52 @@ using UnityEngine.SceneManagement;
 public class ShadowDetection : MonoBehaviour
 {
     public GameObject light;
-    public GameObject player;
     private float spriteWidth;
     private float spriteHeight;
 
-    public bool playerInsideX = false;
-    public bool playerInsideY = false;
-    float extendDistance = 20f; // Muuta t‰h‰n haluamasi et‰isyys
+    bool isPlayerInsideAnyShadow = false; // Lippu kertoo, onko pelaaja miss‰‰n varjossa
+
+    float extendDistance = 20f;
     float minY = -8f;
-    // Start is called before the first frame update
+
     void Start()
     {
-        SpriteRenderer sRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer sRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteWidth = sRenderer.sprite.bounds.size.x * transform.lossyScale.x;
         spriteHeight = sRenderer.sprite.bounds.size.y * transform.lossyScale.y;
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        ShadowDetection[] shadowObjects = FindObjectsOfType<ShadowDetection>();
+
+        // Resetoi lipun jokaisen framen alussa
+        isPlayerInsideAnyShadow = false;
+
+        foreach (ShadowDetection shadowObject in shadowObjects)
+        {
+            if (shadowObject != this)
+            {
+                if (shadowObject.IsPlayerInside())
+                {
+                    // Pelaaja on miss‰‰n varjossa
+                    isPlayerInsideAnyShadow = true;
+                    break; // Lopeta silmukka, koska tied‰mme, ett‰ pelaaja on jo varjossa
+                }
+            }
+        }
+
+        // Tarkista t‰m‰n objektin varjo
+        CheckShadow();
+
+        if (!isPlayerInsideAnyShadow)
+        {
+            // Jos pelaaja ei ole miss‰‰n varjossa, restarttaa scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    void CheckShadow()
     {
         Vector3 lightPosition = new Vector3(light.transform.position.x, light.transform.position.y, 0f);
         Vector3 currentPosition = new Vector3(transform.position.x, transform.position.y, 0f);
@@ -33,15 +61,13 @@ public class ShadowDetection : MonoBehaviour
         Vector3 leftDownEdge = currentPosition - new Vector3(spriteWidth / 2, spriteHeight / 2, 0f);
         Vector3 rightDownEdge = currentPosition + new Vector3(spriteWidth / 2, -spriteHeight / 2, 0f);
 
-        
-
         // Extend lines
         Vector3 extendedLeftUp = leftUpEdge + (leftUpEdge - lightPosition).normalized * extendDistance;
         Vector3 extendedRightUp = rightUpEdge + (rightUpEdge - lightPosition).normalized * extendDistance;
         Vector3 extendedLeftDown = leftDownEdge + (leftDownEdge - lightPosition).normalized * extendDistance;
         Vector3 extendedRightDown = rightDownEdge + (rightDownEdge - lightPosition).normalized * extendDistance;
 
-        //Tarkista ettei viivat mene liian alas
+        // Tarkista ettei viivat mene liian alas
         if (extendedLeftUp.y < minY)
         {
             float t = (minY - leftUpEdge.y) / (extendedLeftUp.y - leftUpEdge.y);
@@ -66,135 +92,42 @@ public class ShadowDetection : MonoBehaviour
             extendedRightDown = rightDownEdge + t * (extendedRightDown - rightDownEdge);
         }
 
+        // Piirr‰ alkuper‰iset viivat ja suorita varjojen tarkistus
+        DrawLines(extendedLeftUp, extendedRightDown);
+        DrawLines(extendedLeftDown, extendedRightUp);
+        DrawLines(extendedRightUp, extendedLeftDown);
+        DrawLines(extendedRightDown, extendedLeftUp);
 
-        //Draw initial lines
+        // Tarkista, onko pelaaja varjon sis‰ll‰
+        bool playerInsideX = IsPlayerInside(extendedLeftUp, extendedRightDown, leftDownEdge, rightDownEdge);
+        bool playerInsideY = IsPlayerInside(extendedLeftDown, extendedRightUp, leftDownEdge, rightDownEdge);
 
-        if (extendedLeftUp.x < extendedLeftDown.x)
+        // P‰ivit‰ isPlayerInsideAnyShadow-lippu
+        isPlayerInsideAnyShadow = playerInsideX || playerInsideY;
+    }
+
+    void DrawLines(Vector3 extendedEdge1, Vector3 extendedEdge2)
+    {
+        Debug.DrawLine(extendedEdge1, light.transform.position, Color.red);
+        Debug.DrawLine(extendedEdge1, extendedEdge2, Color.red);
+    }
+
+    bool IsPlayerInside(Vector3 extendedEdge1, Vector3 extendedEdge2, Vector3 leftDownEdge, Vector3 rightDownEdge)
+    {
+        GameObject player = GameObject.FindWithTag("PLAYER");
+
+        if (player == null)
         {
-            Debug.DrawLine(leftUpEdge, lightPosition, Color.red);
-            Debug.DrawLine(leftUpEdge, extendedLeftUp, Color.red);
-            if (player.transform.position.x > extendedLeftUp.x && player.transform.position.x < extendedRightDown.x)
-            {
-                if (player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y)
-                {
-                    playerInsideY = true;
-                    playerInsideX = true;
-                }
-                else
-                {
-                    playerInsideY = false;
-                    playerInsideX = false;
-                }
-                
-            }
-            else
-            {
-                playerInsideX = false;
-            }
-            
+            Debug.LogError("Player GameObject not found. Please make sure the player has the 'Player' tag.");
+            return false;
         }
 
-        if(extendedLeftDown.x < extendedLeftUp.x)
-        {
-            Debug.DrawLine(leftDownEdge, lightPosition, Color.blue);
-            Debug.DrawLine(leftDownEdge, extendedLeftDown, Color.blue);
-            if (player.transform.position.x > extendedLeftDown.x && player.transform.position.x < extendedRightUp.x)
-            {
-                if (player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y)
-                {
-                    playerInsideY = true;
-                    playerInsideX = true;
-                }
-                else
-                {
-                    playerInsideY = false;
-                    playerInsideX = false;
-                }
-            }
-            else
-            {
-                playerInsideX = false;
-            }
-            
-        }
+        return (player.transform.position.x > extendedEdge1.x && player.transform.position.x < extendedEdge2.x &&
+                player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y);
+    }
 
-        if (extendedRightUp.x > extendedRightDown.x)
-        {
-            if (player.transform.position.x > extendedLeftDown.x && player.transform.position.x < extendedRightUp.x)
-            {
-                if (player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y)
-                {
-                    playerInsideX = true;
-                    playerInsideY = true;
-                }
-                else
-                {
-                    playerInsideX = false;
-                    playerInsideY = false;
-                }
-                    
-            }
-            else
-            {
-                playerInsideX = false;
-            }
-            Debug.DrawLine(rightUpEdge, lightPosition, Color.green);
-            Debug.DrawLine(rightUpEdge, extendedRightUp, Color.green);
-        }
-
-        if (extendedRightDown.x > extendedRightUp.x)
-        {
-            Debug.DrawLine(rightDownEdge, lightPosition, Color.yellow);
-            Debug.DrawLine(rightDownEdge, extendedRightDown, Color.yellow);
-            if (player.transform.position.x > extendedLeftUp.x && player.transform.position.x < extendedRightDown.x)
-            {
-                if (player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y)
-                {
-                    playerInsideX = true;
-                    playerInsideY = true;
-                }
-                else
-                {
-                    playerInsideX = false;
-                    playerInsideY = false;
-                }
-            }
-            else
-            {
-                playerInsideX = false;
-            }
-
-            
-        }
-
-        //Player is in shadows
-        if (playerInsideX)
-        {
-            Debug.Log("Player in the shadows!");
-            PlayerPrefs.SetInt("InShadow", 1);
-        }
-
-        else
-        {
-            Debug.Log("Player not in the shadows!");
-            PlayerPrefs.SetInt("InShadow", 0);
-        }
-
-        if (playerInsideY)
-        {
-            Debug.Log("Player in the shadows!");
-            PlayerPrefs.SetInt("InShadow", 1);
-        }
-
-        else
-        {
-            Debug.Log("Player not in the shadows!");
-            PlayerPrefs.SetInt("InShadow", 0);
-        }
-
-        /*if (PlayerPrefs.GetInt("InShadow") == 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }*/
+    public bool IsPlayerInside()
+    {
+        return isPlayerInsideAnyShadow;
     }
 }
