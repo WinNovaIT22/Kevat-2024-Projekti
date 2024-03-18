@@ -43,6 +43,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        PlayerPrefs.SetInt("GOAL", 0);
     }
 
     // Update is called once per frame
@@ -143,6 +144,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("GOAL"))
         {
+            PlayerPrefs.SetInt("GOAL", 1);
             PlayerPrefs.SetInt("UnlockedLevels", SceneManager.GetActiveScene().buildIndex + 1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
