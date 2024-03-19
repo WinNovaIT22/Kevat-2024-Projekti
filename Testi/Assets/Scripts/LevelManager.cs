@@ -9,8 +9,11 @@ public class LevelManager : MonoBehaviour
 {
     public float fadeTime;
     public Image fadePanel;
+
     [SerializeField] public TextMeshProUGUI[] levelText;
     [SerializeField] public GameObject[] lockIcon;
+
+    public StarManager starmanager;
 
     private const int TotalLevels = 26;
     private int completedLevels = 0;
@@ -19,6 +22,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        starmanager = GetComponent<StarManager>();
+        starmanager.GiveStars();
         if (resetLevels)
         {
             PlayerPrefs.SetInt("UnlockedLevels", 3);
@@ -28,8 +33,9 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         UpdateLevelButtons();
-        Debug.Log(PlayerPrefs.GetInt("UnlockedLevels"));
+        //Debug.Log(PlayerPrefs.GetInt("UnlockedLevels"));
     }
+
 
     private void UpdateLevelButtons()
     {

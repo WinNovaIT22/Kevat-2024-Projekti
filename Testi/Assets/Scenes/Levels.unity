@@ -14283,6 +14283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303301678}
   - component: {fileID: 1303301677}
+  - component: {fileID: 1303301679}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -14358,6 +14359,7 @@ MonoBehaviour:
   - {fileID: 801667405}
   - {fileID: 1566083805}
   - {fileID: 761280831}
+  starmanager: {fileID: 0}
   resetLevels: 0
 --- !u!4 &1303301678
 Transform:
@@ -14374,6 +14376,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303301679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303301676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdf45a8360438498c6c12d89867136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stars:
+  - {fileID: 713911038}
+  - {fileID: 451542244}
+  - {fileID: 646882580}
+  - {fileID: 1622654207}
+  - {fileID: 425895604}
+  - {fileID: 1570568718}
+  - {fileID: 845139219}
+  - {fileID: 869097144}
+  - {fileID: 905076988}
+  - {fileID: 1039118611}
+  - {fileID: 427597474}
+  - {fileID: 1690279559}
+  - {fileID: 1716118118}
+  - {fileID: 425042122}
+  - {fileID: 1129500880}
+  - {fileID: 621981412}
+  - {fileID: 789736419}
+  - {fileID: 336837628}
+  - {fileID: 130531471}
+  - {fileID: 1874999771}
+  - {fileID: 757424309}
+  - {fileID: 664955729}
+  - {fileID: 1538648346}
+  - {fileID: 1522977879}
+  - {fileID: 1661663292}
+  - {fileID: 654279848}
+  - {fileID: 1615738442}
 --- !u!1 &1305223050
 GameObject:
   m_ObjectHideFlags: 0
