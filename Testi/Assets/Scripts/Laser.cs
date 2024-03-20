@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Laser : MonoBehaviour
 {
@@ -40,8 +41,10 @@ public class Laser : MonoBehaviour
             // Esimerkiksi voit kutsua hit.collider.SendMessage("TakeDamage", damageAmount);
         }
 
+
         // Päivitä line renderer
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
+
     }
 }
