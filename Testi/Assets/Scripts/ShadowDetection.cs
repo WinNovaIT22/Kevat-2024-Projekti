@@ -1,45 +1,47 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ShadowDetection : MonoBehaviour
 {
-    public GameObject lightSource;
+    public GameObject light;
     private float spriteWidth;
     private float spriteHeight;
 
-    static List<ShadowDetection> allShadows = new List<ShadowDetection>(); // Lista kaikista varjoista
-    bool isInsideShadow = false; // Tarkistaa, oletko t‰m‰n varjon sis‰ll‰
+    bool isPlayerInsideAnyShadow = false; // Lippu kertoo, onko pelaaja miss‰‰n varjossa
 
     float extendDistance = 20f;
     float minY = -8f;
 
     void Start()
     {
-        SpriteRenderer sRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer sRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteWidth = sRenderer.sprite.bounds.size.x * transform.lossyScale.x;
         spriteHeight = sRenderer.sprite.bounds.size.y * transform.lossyScale.y;
-
-        // Lis‰‰ t‰m‰ varjo kaikkien varjojen listaan
-        allShadows.Add(this);
     }
 
     void Update()
     {
-        // Resetoi lipun jokaisen framen alussa
-        bool isPlayerInsideAnyShadow = false;
+        ShadowDetection[] shadowObjects = FindObjectsOfType<ShadowDetection>();
 
-        // Tarkista kaikkien varjojen tila
-        foreach (ShadowDetection shadow in allShadows)
+        // Resetoi lipun jokaisen framen alussa
+        isPlayerInsideAnyShadow = false;
+
+        foreach (ShadowDetection shadowObject in shadowObjects)
         {
-            shadow.CheckShadow();
-            if (shadow.isInsideShadow)
+            if (shadowObject != this)
             {
-                isPlayerInsideAnyShadow = true;
-                break; // Jos pelaaja on jo miss‰‰n varjossa, ei tarvitse tarkistaa en‰‰ muita
+                if (shadowObject.IsPlayerInside())
+                {
+                    // Pelaaja on miss‰‰n varjossa
+                    isPlayerInsideAnyShadow = true;
+                    break; // Lopeta silmukka, koska tied‰mme, ett‰ pelaaja on jo varjossa
+                }
             }
         }
+
+        // Tarkista t‰m‰n objektin varjo
+        CheckShadow();
 
         if (!isPlayerInsideAnyShadow)
         {
@@ -50,8 +52,8 @@ public class ShadowDetection : MonoBehaviour
 
     void CheckShadow()
     {
-        Vector3 lightPosition = lightSource.transform.position;
-        Vector3 currentPosition = transform.position;
+        Vector3 lightPosition = new Vector3(light.transform.position.x, light.transform.position.y, 0f);
+        Vector3 currentPosition = new Vector3(transform.position.x, transform.position.y, 0f);
 
         Vector3 leftUpEdge = currentPosition - new Vector3(spriteWidth / 2, -spriteHeight / 2, 0f);
         Vector3 rightUpEdge = currentPosition + new Vector3(spriteWidth / 2, spriteHeight / 2, 0f);
@@ -89,9 +91,24 @@ public class ShadowDetection : MonoBehaviour
             extendedRightDown = rightDownEdge + t * (extendedRightDown - rightDownEdge);
         }
 
-        // Tarkista, onko pelaaja t‰m‰n varjon sis‰ll‰
-        isInsideShadow = IsPlayerInside(extendedLeftUp, extendedRightDown, leftDownEdge, rightDownEdge) ||
-                         IsPlayerInside(extendedLeftDown, extendedRightUp, leftDownEdge, rightDownEdge);
+        // Piirr‰ alkuper‰iset viivat ja suorita varjojen tarkistus
+        DrawLines(extendedLeftUp, extendedRightDown);
+        DrawLines(extendedLeftDown, extendedRightUp);
+        DrawLines(extendedRightUp, extendedLeftDown);
+        DrawLines(extendedRightDown, extendedLeftUp);
+
+        // Tarkista, onko pelaaja varjon sis‰ll‰
+        bool playerInsideX = IsPlayerInside(extendedLeftUp, extendedRightDown, leftDownEdge, rightDownEdge);
+        bool playerInsideY = IsPlayerInside(extendedLeftDown, extendedRightUp, leftDownEdge, rightDownEdge);
+
+        // P‰ivit‰ isPlayerInsideAnyShadow-lippu
+        isPlayerInsideAnyShadow = playerInsideX || playerInsideY;
+    }
+
+    void DrawLines(Vector3 extendedEdge1, Vector3 extendedEdge2)
+    {
+        Debug.DrawLine(extendedEdge1, light.transform.position, Color.red);
+        Debug.DrawLine(extendedEdge1, extendedEdge2, Color.red);
     }
 
     bool IsPlayerInside(Vector3 extendedEdge1, Vector3 extendedEdge2, Vector3 leftDownEdge, Vector3 rightDownEdge)
@@ -106,5 +123,10 @@ public class ShadowDetection : MonoBehaviour
 
         return (player.transform.position.x > extendedEdge1.x && player.transform.position.x < extendedEdge2.x &&
                 player.transform.position.y < leftDownEdge.y && player.transform.position.y < rightDownEdge.y);
+    }
+
+    public bool IsPlayerInside()
+    {
+        return isPlayerInsideAnyShadow;
     }
 }
