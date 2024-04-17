@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
 
     public StarManager starmanager;
 
-    private const int TotalLevels = 26;
+    private const int TotalLevels = 17;
     private int completedLevels = 0;
 
     public bool resetLevels = false;

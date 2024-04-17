@@ -415,8 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a46523299b26c045905d32ea4ae3fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  back: 0
+  rotationSpeed: 150
+  back: 1
   forward: 0
 --- !u!114 &266674315
 MonoBehaviour:
@@ -560,8 +560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a46523299b26c045905d32ea4ae3fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  back: 0
+  rotationSpeed: 150
+  back: 1
   forward: 0
 --- !u!114 &451376843
 MonoBehaviour:
@@ -751,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510910711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.5, y: 1.5263, z: 0}
+  m_LocalPosition: {x: -17.66, y: 1.5263, z: 0}
   m_LocalScale: {x: 1.0907, y: 18.556238, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1141,7 +1141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613148067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.37, y: -3.59, z: 0}
+  m_LocalPosition: {x: 11.9, y: -3.59, z: 0}
   m_LocalScale: {x: 1.0907, y: 21.136139, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1291,9 +1291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a26c435d31b4c7468ce2d1911f61704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
-  back: 0
-  forward: 0
 --- !u!114 &804145505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1306,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e75a34c979feb242945d1c6dfb1ddbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 1
+  moveTime: 0.5
   yPos: -7.04
   xPos: 10
   xMovement: 0
@@ -1558,7 +1555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869763928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.5, y: -14.34, z: 0}
+  m_LocalPosition: {x: -17.66, y: -14.34, z: 0}
   m_LocalScale: {x: 1.0907, y: 10.7237, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2221,9 +2218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a46523299b26c045905d32ea4ae3fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
+  rotationSpeed: 150
   back: 0
-  forward: 0
+  forward: 1
 --- !u!114 &1407642890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2438,7 +2435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486303533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.5, y: 0, z: 0}
+  m_LocalPosition: {x: 17.71, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.51, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2523,7 +2520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498783955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.5, y: 6, z: 0}
+  m_LocalPosition: {x: 17.71, y: 6, z: 0}
   m_LocalScale: {x: 1.0907, y: 10.7237, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2588,9 +2585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a26c435d31b4c7468ce2d1911f61704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
-  back: 0
-  forward: 0
 --- !u!114 &1576294635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2603,7 +2597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e75a34c979feb242945d1c6dfb1ddbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 1
+  moveTime: 0.5
   yPos: 9.4
   xPos: 10
   xMovement: 0
@@ -2779,7 +2773,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951408560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.5, y: -6, z: 0}
+  m_LocalPosition: {x: 17.71, y: -6, z: 0}
   m_LocalScale: {x: 1.0907, y: 10.7237, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2844,9 +2838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a46523299b26c045905d32ea4ae3fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
+  rotationSpeed: 150
   back: 0
-  forward: 0
+  forward: 1
 --- !u!114 &1964192553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2989,8 +2983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a46523299b26c045905d32ea4ae3fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  back: 0
+  rotationSpeed: 150
+  back: 1
   forward: 0
 --- !u!114 &2078936226
 MonoBehaviour:

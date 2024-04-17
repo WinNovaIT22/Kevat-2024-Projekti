@@ -11,6 +11,7 @@ TagManager:
   - ChangeToNormal
   - ChangeToUnNormal
   - Sun
+  - InvisibleWall
   layers:
   - Default
   - TransparentFX
