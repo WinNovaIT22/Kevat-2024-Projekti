@@ -5,6 +5,7 @@ using UnityEngine;
 public class removeCoin : MonoBehaviour
 {
     public int value;
+    public int coins;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class removeCoin : MonoBehaviour
         {
             Destroy(this.gameObject);
             TextManager.instance.IncreaseCoins(value);
+            PlayerPrefs.SetInt("Kerta", 1);
         }
     }
 }
