@@ -15,7 +15,7 @@ public class StarManager : MonoBehaviour
 
     public void LevelStars()
     {
-        for (int j = 0; j < 27; j++)
+        for (int j = 0; j < 18; j++)
         {
             for (int i = inumb; i < PlayerPrefs.GetInt("Level" + levelNumb.ToString() + "Stars") + inumb; i++)
             {
