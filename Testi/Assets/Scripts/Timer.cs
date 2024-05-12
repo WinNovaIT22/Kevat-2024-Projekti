@@ -325,11 +325,41 @@ public class Timer : MonoBehaviour
 
     public void level8Times()
     {
-        float star3time = 0f;
-        float star2time = 0f;
-        float star1time = 0f;
+        float star3time = 20f;
+        float star2time = 22f;
+        float star1time = 24f;
+        PlayerPrefs.SetInt("Level8FirstTime", 1);
+        if (PlayerPrefs.GetInt("Level8FirstTime") == 1)
+        {
+            if (seconds <= star3time && minutes == 0)
+            {
+                //alle 19 sekunttia = 3 tähteä   
+                PlayerPrefs.SetInt("Level8Stars", 3);
+                Debug.Log("3 tähteä");
+            }
 
-        Debug.Log("Level 8");
+            else if (seconds <= star2time && minutes == 0)
+            {
+                //alle 21 sekunttia = 2 tähteä
+                PlayerPrefs.SetInt("Level8Stars", 2);
+                Debug.Log("2 tähteä");
+            }
+
+            else if (seconds <= star1time && minutes == 0)
+            {
+                //alle 22 sekunttia = 1 tähti
+                PlayerPrefs.SetInt("Level8Stars", 1);
+                Debug.Log("1 tähti");
+            }
+
+            else
+            {
+                //ei tähtiä
+                PlayerPrefs.SetInt("Level8Stars", 0);
+                Debug.Log("ei tähtiä");
+            }
+            PlayerPrefs.SetInt("Level8FirstTime", 0);
+        }
     }
 
     public void level9Times()
