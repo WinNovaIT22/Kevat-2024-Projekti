@@ -19,15 +19,14 @@ public class LevelManager : MonoBehaviour
     private int completedLevels = 0;
 
     public bool resetLevels = false;
-
     void Start()
     {
-        starmanager = GetComponent<StarManager>();
-        starmanager.GiveStars();
         if (resetLevels)
         {
             PlayerPrefs.SetInt("UnlockedLevels", 3);
         }
+        starmanager = GetComponent<StarManager>();
+        starmanager.GiveStars();
     }
 
     void Update()

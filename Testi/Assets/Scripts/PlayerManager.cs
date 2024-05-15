@@ -149,6 +149,11 @@ public class PlayerManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+        if (collision.gameObject.CompareTag("LASTGOAL"))
+        {
+            SceneManager.LoadScene("Levels");
+        }
+
         if (collision.gameObject.CompareTag("ChangeToNormal"))
         {
             Debug.Log("Vaihda modea");

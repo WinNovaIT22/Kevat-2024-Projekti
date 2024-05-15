@@ -12,6 +12,7 @@ TagManager:
   - ChangeToUnNormal
   - Sun
   - InvisibleWall
+  - LASTGOAL
   layers:
   - Default
   - TransparentFX
