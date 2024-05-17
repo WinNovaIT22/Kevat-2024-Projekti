@@ -33,7 +33,7 @@ public class Laser : MonoBehaviour
             Debug.Log("Osuma objektiin: " + hit.collider.name);
 
             // Voit tässä käsitellä mitä haluat tehdä, kun laser osuu johonkin
-            if (hit.collider.name == "Player")
+            if (hit.collider.name == "PLAYER")
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }

@@ -36,9 +36,9 @@ public class Timer : MonoBehaviour
         if (PlayerPrefs.GetInt("GOAL") == 1)
         {
             // Kutsutaan funktiota levelin mukaan, jos level on suurempi kuin 0 ja pienempi tai yhtäsuuri kuin metodien määrä.
-            if (level > 0 && level <= methods.Length)
+            if (level >= 0 && level <= methods.Length)
             {
-                methods[level - 1].Invoke(this, null);
+                methods[level].Invoke(this, null); //methods[level - 1]
             }
         }
         
@@ -58,28 +58,28 @@ public class Timer : MonoBehaviour
             {
                 //alle 4 sekunttia = 3 tähteä   
                 PlayerPrefs.SetInt("Level1Stars", 3);
-                Debug.Log("3 tähteä");
+                Debug.Log("Level 1: 3 tähteä");
             }
 
             else if (seconds <= star2time && minutes == 0)
             {
                 //alle 6 sekunttia = 2 tähteä
                 PlayerPrefs.SetInt("Level1Stars", 2);
-                Debug.Log("2 tähteä");
+                Debug.Log("Level 1: 2 tähteä");
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
                 //alle 8 sekunttia = 1 tähti
                 PlayerPrefs.SetInt("Level1Stars", 1);
-                Debug.Log("1 tähti");
+                Debug.Log("Level 1: 1 tähti");
             }
 
             else
             {
                 //ei tähtiä
                 PlayerPrefs.SetInt("Level1Stars", 0);
-                Debug.Log("ei tähtiä");
+                Debug.Log("Level 1: ei tähtiä");
             }
             PlayerPrefs.SetInt("Level1FirstTime", 0);
         }
@@ -99,28 +99,28 @@ public class Timer : MonoBehaviour
             {
                 //alle 4 sekunttia = 3 tähteä   
                 PlayerPrefs.SetInt("Level2Stars", 3);
-                Debug.Log("3 tähteä");
+                Debug.Log("Level 2: 3 tähteä");
             }
 
             else if (seconds <= star2time && minutes == 0)
             {
                 //alle 6 sekunttia = 2 tähteä
                 PlayerPrefs.SetInt("Level2Stars", 2);
-                Debug.Log("2 tähteä");
+                Debug.Log("Level 2: 2 tähteä");
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
                 //alle 8 sekunttia = 1 tähti
                 PlayerPrefs.SetInt("Level2Stars", 1);
-                Debug.Log("1 tähti");
+                Debug.Log("Level 2: 1 tähti");
             }
 
             else
             {
                 //ei tähtiä
                 PlayerPrefs.SetInt("Level2Stars", 0);
-                Debug.Log("ei tähtiä");
+                Debug.Log("Level 2: ei tähtiä");
             }
             PlayerPrefs.SetInt("Level2FirstTime", 0);
         }
@@ -137,28 +137,28 @@ public class Timer : MonoBehaviour
             {
                 //alle 5 sekunttia = 3 tähteä   
                 PlayerPrefs.SetInt("Level3Stars", 3);
-                Debug.Log("3 tähteä");
+                Debug.Log("Level 3: 3 tähteä");
             }
 
             else if (seconds <= star2time && minutes == 0)
             {
                 //alle 6 sekunttia = 2 tähteä
                 PlayerPrefs.SetInt("Level3Stars", 2);
-                Debug.Log("2 tähteä");
+                Debug.Log("Level 3: 2 tähteä");
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
                 //alle 7 sekunttia = 1 tähti
                 PlayerPrefs.SetInt("Level3Stars", 1);
-                Debug.Log("1 tähti");
+                Debug.Log("Level 3: 1 tähti");
             }
 
             else
             {
                 //ei tähtiä
                 PlayerPrefs.SetInt("Level3Stars", 0);
-                Debug.Log("ei tähtiä");
+                Debug.Log("Level 3: ei tähtiä");
             }
             PlayerPrefs.SetInt("Level3FirstTime", 0);
         }

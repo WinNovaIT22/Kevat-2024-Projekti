@@ -13,12 +13,12 @@ public class StarManager : MonoBehaviour
     {
         if (resetStars)
         {
-            for (int i = 0; i < 18; i++)
+            for (int i = 1; i < 18; i++)
             {
                 Debug.Log("Resetting stars");
-                PlayerPrefs.SetInt("Level" + numb.ToString() + "Stars", 0);
+                PlayerPrefs.SetInt("Level" + i.ToString() + "Stars", 0);
                 PlayerPrefs.SetInt("Level" + numb.ToString() + "FirstTime", 0);
-                Debug.Log("Level" + i + ": " + PlayerPrefs.GetInt("Level" + i + "Stars") + " Stars");
+                //Debug.Log("Level" + i + ": " + PlayerPrefs.GetInt("Level" + i + "Stars") + " Stars");
             }
         }
         else

@@ -9796,7 +9796,7 @@ MonoBehaviour:
   - {fileID: 1795139800}
   - {fileID: 646242627}
   - {fileID: 2137497060}
-  resetStars: 1
+  resetStars: 0
 --- !u!1 &1305223050
 GameObject:
   m_ObjectHideFlags: 0

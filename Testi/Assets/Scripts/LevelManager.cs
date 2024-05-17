@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     {
         if (resetLevels)
         {
-            PlayerPrefs.SetInt("UnlockedLevels", 3);
+            PlayerPrefs.SetInt("UnlockedLevels", 2);
         }
         starmanager = GetComponent<StarManager>();
         starmanager.GiveStars();
@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < TotalLevels; i++)
         {
-            bool isUnlocked = PlayerPrefs.GetInt("UnlockedLevels") > i + 3;
+            bool isUnlocked = PlayerPrefs.GetInt("UnlockedLevels") > i + 2;
             levelText[i].gameObject.SetActive(isUnlocked);
             lockIcon[i].SetActive(!isUnlocked);
         }
@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
     {
         int sceneIndex = levelIndex + 1;
         Debug.Log(sceneIndex);
-        if (PlayerPrefs.GetInt("UnlockedLevels") -2 >= sceneIndex)
+        if (PlayerPrefs.GetInt("UnlockedLevels") -1 >= sceneIndex)
         {
             StartCoroutine(LevelSequence(sceneIndex));
         }
@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1.0f;
 
         // Assume the level is completed when transitioning to the next level.
-        completedLevels = Mathf.Max(completedLevels, levelIndex - 2);
+        completedLevels = Mathf.Max(completedLevels, levelIndex - 1);
 
         // Save the completed levels to PlayerPrefs.
         PlayerPrefs.SetInt("CompletedLevels", completedLevels);
