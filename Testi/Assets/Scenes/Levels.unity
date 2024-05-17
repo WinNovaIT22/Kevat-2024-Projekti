@@ -12684,7 +12684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTime: 0.3
   fadePanel: {fileID: 1784412377}
-  resetPrefs: 0
+  resetPrefs: 1
 --- !u!4 &1739904595
 Transform:
   m_ObjectHideFlags: 0

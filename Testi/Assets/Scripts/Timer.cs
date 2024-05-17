@@ -35,16 +35,15 @@ public class Timer : MonoBehaviour
 
         if (PlayerPrefs.GetInt("GOAL") == 1)
         {
-            // Kutsutaan funktiota levelin mukaan, jos level on suurempi kuin 0 ja pienempi tai yhtäsuuri kuin metodien määrä.
             if (level >= 0 && level <= methods.Length)
             {
-                methods[level].Invoke(this, null); //methods[level - 1]
+                methods[level].Invoke(this, null);
             }
         }
         
     }
 
-    // Esimerkkinä eri levelien metodit
+
     public void level1Times()
     {
         float star3time = 4f;
@@ -63,26 +62,56 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 6 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level1Stars", 2);
-                Debug.Log("Level 1: 2 tähteä");
+                
+                if (PlayerPrefs.GetInt("Level1Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+                    //alle 6 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level1Stars", 2);
+                    Debug.Log("Level 1: 2 tähteä");
+                }
+                
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 8 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level1Stars", 1);
-                Debug.Log("Level 1: 1 tähti");
+               
+                if (PlayerPrefs.GetInt("Level1Stars") == 3 || PlayerPrefs.GetInt("Level1Stars") == 2)
+                {
+
+                }
+                
+                else
+                {
+                    //alle 8 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level1Stars", 1);
+                    Debug.Log("Level 1: 1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level1Stars", 0);
-                Debug.Log("Level 1: ei tähtiä");
+                
+                if (PlayerPrefs.GetInt("Level1Stars") == 3 || PlayerPrefs.GetInt("Level1Stars") == 2 || PlayerPrefs.GetInt("Level1Stars") == 1)
+                {
+
+                }
+                
+                else
+                {
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level1Stars", 0);
+                    Debug.Log("Level 1: ei tähtiä");
+                }
+                
             }
             PlayerPrefs.SetInt("Level1FirstTime", 0);
         }
+        
 
     }
 
@@ -97,6 +126,7 @@ public class Timer : MonoBehaviour
         {
             if (seconds <= star3time && minutes == 0)
             {
+
                 //alle 4 sekunttia = 3 tähteä   
                 PlayerPrefs.SetInt("Level2Stars", 3);
                 Debug.Log("Level 2: 3 tähteä");
@@ -104,27 +134,56 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 6 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level2Stars", 2);
-                Debug.Log("Level 2: 2 tähteä");
+                if (PlayerPrefs.GetInt("Level2Stars") == 3)
+                {
+
+                }
+                else
+                {
+                    //alle 6 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level2Stars", 2);
+                    Debug.Log("Level 2: 2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 8 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level2Stars", 1);
-                Debug.Log("Level 2: 1 tähti");
+                
+                if (PlayerPrefs.GetInt("Level2Stars") == 3 || PlayerPrefs.GetInt("Level2Stars") == 2)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 8 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level2Stars", 1);
+                    Debug.Log("Level 2: 1 tähti");
+                }
+                
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level2Stars", 0);
-                Debug.Log("Level 2: ei tähtiä");
+               
+                if (PlayerPrefs.GetInt("Level2Stars") == 3 || PlayerPrefs.GetInt("Level2Stars") == 2 || PlayerPrefs.GetInt("Level2Stars") == 1)
+                {
+
+                }
+                
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level2Stars", 0);
+                    Debug.Log("Level 2: ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level2FirstTime", 0);
         }
     }
+
     public void level3Times()
     {
         float star3time = 5f;
@@ -142,23 +201,53 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 6 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level3Stars", 2);
-                Debug.Log("Level 3: 2 tähteä");
+                if (PlayerPrefs.GetInt("Level3Stars") == 3)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 6 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level3Stars", 2);
+                    Debug.Log("Level 3: 2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 7 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level3Stars", 1);
-                Debug.Log("Level 3: 1 tähti");
+                
+                if (PlayerPrefs.GetInt("Level3Stars") == 3 || PlayerPrefs.GetInt("Level3Stars") == 2)
+                {
+
+                }
+                
+
+                else
+                {
+
+                    //alle 7 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level3Stars", 1);
+                    Debug.Log("Level 3: 1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level3Stars", 0);
-                Debug.Log("Level 3: ei tähtiä");
+                
+                if (PlayerPrefs.GetInt("Level3Stars") == 3 || PlayerPrefs.GetInt("Level3Stars") == 2 || PlayerPrefs.GetInt("Level3Stars") == 1)
+                {
+
+                }
+                
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level3Stars", 0);
+                    Debug.Log("Level 3: ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level3FirstTime", 0);
         }
@@ -182,23 +271,49 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level4Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level4Stars") == 3)
+                {
+
+                }
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level4Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level4Stars", 1);
-                Debug.Log("1 tähti");
+                if (PlayerPrefs.GetInt("Level4Stars") == 3 || PlayerPrefs.GetInt("Level4Stars") == 2)
+                {
+
+                }
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level4Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level4Stars", 0);
-                Debug.Log("ei tähtiä");
+                
+                if (PlayerPrefs.GetInt("Level4Stars") == 3 || PlayerPrefs.GetInt("Level4Stars") == 2 || PlayerPrefs.GetInt("Level4Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level4Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level4FirstTime", 0);
         }
@@ -222,23 +337,51 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level5Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level5Stars") == 3)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level5Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level5Stars", 1);
-                Debug.Log("1 tähti");
+                
+                if (PlayerPrefs.GetInt("Level5Stars") == 3 || PlayerPrefs.GetInt("Level5Stars") == 2)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level5Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level5Stars", 0);
-                Debug.Log("ei tähtiä");
+                
+                if (PlayerPrefs.GetInt("Level5Stars") == 3 || PlayerPrefs.GetInt("Level5Stars") == 2 || PlayerPrefs.GetInt("Level5Stars") == 1)
+                {
+
+                }
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level5Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level5FirstTime", 0);
         }
@@ -262,27 +405,56 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level6Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level6Stars") == 3)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level6Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level6Stars", 1);
-                Debug.Log("1 tähti");
+                
+                if (PlayerPrefs.GetInt("Level6Stars") == 3 || PlayerPrefs.GetInt("Level6Stars") == 2)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level6Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level6Stars", 0);
-                Debug.Log("ei tähtiä");
+                
+                if (PlayerPrefs.GetInt("Level6Stars") == 3 || PlayerPrefs.GetInt("Level6Stars") == 2 || PlayerPrefs.GetInt("Level6Stars") == 1)
+                {
+
+                }
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level6Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level6FirstTime", 0);
         }
     }
+
     public void level7Times()
     {
         float star3time = 18f;
@@ -300,23 +472,51 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level7Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level7Stars") == 3)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level7Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level7Stars", 1);
-                Debug.Log("1 tähti");
+                
+                if (PlayerPrefs.GetInt("Level7Stars") == 3 || PlayerPrefs.GetInt("Level7Stars") == 2)
+                {
+
+                }
+                
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level7Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level7Stars", 0);
-                Debug.Log("ei tähtiä");
+
+                if (PlayerPrefs.GetInt("Level7Stars") == 3 || PlayerPrefs.GetInt("Level7Stars") == 2 || PlayerPrefs.GetInt("Level7Stars") == 1)
+                {
+
+                }
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level7Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level7FirstTime", 0);
         }
@@ -340,23 +540,54 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level8Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level8Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level8Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level8Stars", 1);
-                Debug.Log("1 tähti");
+                
+
+                if (PlayerPrefs.GetInt("Level8Stars") == 3 || PlayerPrefs.GetInt("Level8Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level8Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level8Stars", 0);
-                Debug.Log("ei tähtiä");
+                
+
+                if (PlayerPrefs.GetInt("Level8Stars") == 3 || PlayerPrefs.GetInt("Level8Stars") == 2 || PlayerPrefs.GetInt("Level8Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level8Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level8FirstTime", 0);
         }
@@ -379,23 +610,51 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes <= 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level9Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level9Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level9Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes <= 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level9Stars", 1);
-                Debug.Log("1 tähti");
+
+                if (PlayerPrefs.GetInt("Level9Stars") == 3 || PlayerPrefs.GetInt("Level9Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level9Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level9Stars", 0);
-                Debug.Log("ei tähtiä");
+                if (PlayerPrefs.GetInt("Level9Stars") == 3 || PlayerPrefs.GetInt("Level9Stars") == 2 || PlayerPrefs.GetInt("Level9Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level9Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level9FirstTime", 0);
         }
@@ -418,23 +677,52 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level10Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level10Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level10Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level10Stars", 1);
-                Debug.Log("1 tähti");
+ 
+                if (PlayerPrefs.GetInt("Level10Stars") == 3 || PlayerPrefs.GetInt("Level10Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level10Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level10Stars", 0);
-                Debug.Log("ei tähtiä");
+
+                if (PlayerPrefs.GetInt("Level10Stars") == 3 || PlayerPrefs.GetInt("Level10Stars") == 2 || PlayerPrefs.GetInt("Level10Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level10Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level10FirstTime", 0);
         }
@@ -457,27 +745,57 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level11Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level11Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level11Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level11Stars", 1);
-                Debug.Log("1 tähti");
+
+                if (PlayerPrefs.GetInt("Level11Stars") == 3 || PlayerPrefs.GetInt("Level11Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level11Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level11Stars", 0);
-                Debug.Log("ei tähtiä");
+
+                if (PlayerPrefs.GetInt("Level11Stars") == 3 || PlayerPrefs.GetInt("Level11Stars") == 2 || PlayerPrefs.GetInt("Level11Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level11Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level11FirstTime", 0);
         }
     }
+
     public void level12Times()
     {
         float star3time = 33f;
@@ -495,23 +813,50 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level12Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level12Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level12Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level12Stars", 1);
-                Debug.Log("1 tähti");
+                if (PlayerPrefs.GetInt("Level12Stars") == 3 || PlayerPrefs.GetInt("Level12Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level12Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level12Stars", 0);
-                Debug.Log("ei tähtiä");
+                if (PlayerPrefs.GetInt("Level12Stars") == 3 || PlayerPrefs.GetInt("Level12Stars") == 2 || PlayerPrefs.GetInt("Level12Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level12Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level12FirstTime", 0);
         }
@@ -534,27 +879,57 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level13Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level13Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level13Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level13Stars", 1);
-                Debug.Log("1 tähti");
+
+                if (PlayerPrefs.GetInt("Level13Stars") == 3 || PlayerPrefs.GetInt("Level13Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level13Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level13Stars", 0);
-                Debug.Log("ei tähtiä");
+
+                if (PlayerPrefs.GetInt("Level13Stars") == 3 || PlayerPrefs.GetInt("Level13Stars") == 2 || PlayerPrefs.GetInt("Level13Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level13Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level13FirstTime", 0);
         }
     }
+
     public void level14Times()
     {
         float star3time = 10f;
@@ -572,23 +947,50 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level14Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level14Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level14Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level14Stars", 1);
-                Debug.Log("1 tähti");
+                if (PlayerPrefs.GetInt("Level14Stars") == 3 || PlayerPrefs.GetInt("Level14Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level14Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level14Stars", 0);
-                Debug.Log("ei tähtiä");
+                if (PlayerPrefs.GetInt("Level14Stars") == 3 || PlayerPrefs.GetInt("Level14Stars") == 2 || PlayerPrefs.GetInt("Level14Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level14Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level14FirstTime", 0);
         }
@@ -611,23 +1013,51 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level15Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level15Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level15Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level15Stars", 1);
-                Debug.Log("1 tähti");
+
+                if (PlayerPrefs.GetInt("Level15Stars") == 3 || PlayerPrefs.GetInt("Level15Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level15Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level15Stars", 0);
-                Debug.Log("ei tähtiä");
+                if (PlayerPrefs.GetInt("Level15Stars") == 3 || PlayerPrefs.GetInt("Level15Stars") == 2 || PlayerPrefs.GetInt("Level15Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level15Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level15FirstTime", 0);
         }
@@ -650,27 +1080,55 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level16Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level16Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level16Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level16Stars", 1);
-                Debug.Log("1 tähti");
+                if (PlayerPrefs.GetInt("Level16Stars") == 3 || PlayerPrefs.GetInt("Level16Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level16Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level16Stars", 0);
-                Debug.Log("ei tähtiä");
+                if (PlayerPrefs.GetInt("Level16Stars") == 3 || PlayerPrefs.GetInt("Level16Stars") == 2 || PlayerPrefs.GetInt("Level16Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level16Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level16FirstTime", 0);
         }
     }
+
     public void level17Times()
     {
         float star3time = 48f;
@@ -688,23 +1146,50 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level17Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level17Stars") == 3)
+                {
+
+                }
+
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level17Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level17Stars", 1);
-                Debug.Log("1 tähti");
+                if (PlayerPrefs.GetInt("Level17Stars") == 3 || PlayerPrefs.GetInt("Level17Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level17Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level17Stars", 0);
-                Debug.Log("ei tähtiä");
+                if (PlayerPrefs.GetInt("Level17Stars") == 3 || PlayerPrefs.GetInt("Level17Stars") == 2 || PlayerPrefs.GetInt("Level17Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level17Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level17FirstTime", 0);
         }
@@ -727,23 +1212,50 @@ public class Timer : MonoBehaviour
 
             else if (seconds <= star2time && minutes == 0)
             {
-                //alle 21 sekunttia = 2 tähteä
-                PlayerPrefs.SetInt("Level18Stars", 2);
-                Debug.Log("2 tähteä");
+                if (PlayerPrefs.GetInt("Level18Stars") == 3)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 21 sekunttia = 2 tähteä
+                    PlayerPrefs.SetInt("Level18Stars", 2);
+                    Debug.Log("2 tähteä");
+                }
             }
 
             else if (seconds <= star1time && minutes == 0)
             {
-                //alle 22 sekunttia = 1 tähti
-                PlayerPrefs.SetInt("Level18Stars", 1);
-                Debug.Log("1 tähti");
+                if (PlayerPrefs.GetInt("Level18Stars") == 3 || PlayerPrefs.GetInt("Level18Stars") == 2)
+                {
+
+                }
+
+                else
+                {
+
+                    //alle 22 sekunttia = 1 tähti
+                    PlayerPrefs.SetInt("Level18Stars", 1);
+                    Debug.Log("1 tähti");
+                }
             }
 
             else
             {
-                //ei tähtiä
-                PlayerPrefs.SetInt("Level18Stars", 0);
-                Debug.Log("ei tähtiä");
+                if (PlayerPrefs.GetInt("Level18Stars") == 3 || PlayerPrefs.GetInt("Level18Stars") == 2 || PlayerPrefs.GetInt("Level18Stars") == 1)
+                {
+
+                }
+
+                else
+                {
+
+                    //ei tähtiä
+                    PlayerPrefs.SetInt("Level18Stars", 0);
+                    Debug.Log("ei tähtiä");
+                }
             }
             PlayerPrefs.SetInt("Level18FirstTime", 0);
         }

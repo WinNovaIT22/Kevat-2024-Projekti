@@ -21,10 +21,12 @@ public class LevelManager : MonoBehaviour
     public bool resetLevels = false;
     void Start()
     {
-        if (resetLevels)
+        if (resetLevels || PlayerPrefs.GetInt("ResetLevels") == 1)
         {
             PlayerPrefs.SetInt("UnlockedLevels", 2);
+            PlayerPrefs.SetInt("ResetLevels", 0);
         }
+
         starmanager = GetComponent<StarManager>();
         starmanager.GiveStars();
     }
@@ -32,7 +34,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         UpdateLevelButtons();
-        //Debug.Log(PlayerPrefs.GetInt("UnlockedLevels"));
+        Debug.Log("Kenttä " + (PlayerPrefs.GetInt("UnlockedLevels") - 1));
     }
 
 

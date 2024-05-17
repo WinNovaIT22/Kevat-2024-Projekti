@@ -11,7 +11,7 @@ public class StarManager : MonoBehaviour
     public bool resetStars = false;
     public void GiveStars()
     {
-        if (resetStars)
+        if (resetStars || PlayerPrefs.GetInt("ResetStars") == 1)
         {
             for (int i = 1; i < 18; i++)
             {
@@ -20,6 +20,7 @@ public class StarManager : MonoBehaviour
                 PlayerPrefs.SetInt("Level" + numb.ToString() + "FirstTime", 0);
                 //Debug.Log("Level" + i + ": " + PlayerPrefs.GetInt("Level" + i + "Stars") + " Stars");
             }
+            PlayerPrefs.SetInt("ResetStars", 0);
         }
         else
         {
