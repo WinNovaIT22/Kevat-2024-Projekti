@@ -71,12 +71,12 @@ public class PlayerManager : MonoBehaviour
 
         Debug.Log("Koskettaako maata: " + isGrounded());
 
-        if (Input.GetKeyDown(KeyCode.W) && coyoteTimeCounter > 0f && !normalMode)
+        if (Input.GetKeyDown(KeyCode.W) && coyoteTimeCounter > 0f && !normalMode || Input.GetKeyDown(KeyCode.UpArrow) && coyoteTimeCounter > 0f && !normalMode)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && rb.velocity.y > 0f && !normalMode)
+        if (Input.GetKeyDown(KeyCode.W) && rb.velocity.y > 0f && !normalMode || Input.GetKeyDown(KeyCode.UpArrow) && rb.velocity.y > 0f && !normalMode)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 

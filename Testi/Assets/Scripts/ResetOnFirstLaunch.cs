@@ -9,9 +9,10 @@ public class ResetOnFirstLaunch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!resetOnLaunch)
+        if(PlayerPrefs.GetInt("IDK") == 0)
         {
             PlayerPrefs.SetInt("FirstLaunch", 0);
+            PlayerPrefs.SetInt("IDK", 1);
         }
         if (resetOnLaunch)
         {
